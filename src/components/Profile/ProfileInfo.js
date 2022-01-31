@@ -27,7 +27,7 @@ const ProfileInfo = (props) => {
                 <h2>{User.acf.first_name} {User.acf.last_name} ({User.name})</h2>
                 <div className="profile-info__desc">
                     <div className="profile-info__item"><b>{User.acf.status}</b></div>
-                    <div className="profile-info__item"><b>Телефон: </b>{User.acf.phone}</div>
+                    <div className="profile-info__item"><b>Phone: </b>{User.acf.phone}</div>
 
                 </div>
             </div>

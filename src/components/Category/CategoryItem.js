@@ -86,8 +86,8 @@ class CategoryItem extends React.Component {
             ...magenta
         ]
         const valSchema = yup.object().shape({
-            name: yup.string().typeError('Это поле принимает только текст').required('Это поле обязательное').min(3, 'Поле должно состоять не менее чем из 3 символов'),
-            desc: yup.string().typeError().required('Это поле обязательное').min(3, 'Поле должно состоять не менее чем из 3 символов'),
+            name: yup.string().typeError('This field only accepts text').required('This field is required').min(3, 'The field must be at least 3 characters long'),
+            desc: yup.string().typeError().required('This field is required').min(3, 'The field must be at least 3 characters long'),
         })
         return (
             <Col xs={24} md={24} lg={12} xl={8} xxl={6} style={{padding: '0 10px'}}>

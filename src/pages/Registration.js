@@ -22,10 +22,10 @@ const Registration = () => {
         dispatch(actionCreateAuth(values.login,values.password,values.email))
     }
     const valSchema = yup.object().shape({
-        login: yup.string().typeError('Это поле принимает только текст').required('Это поле обязательное').min(3,'Поле должно состоять не менее чем из 3 символов'),
-        email: yup.string().email('Неправильный email').required('Это поле обязательное').min(3,'Поле должно состоять не менее чем из 3 символов'),
-        password: yup.string().typeError('Это поле принимает только текст').required('Это поле обязательное').min(6,'Поле должно состоять не менее чем из 6 символов'),
-        second_password: yup.string().oneOf([yup.ref('password'), null], 'Пароли должны совпадать'),
+        login: yup.string().typeError('This field only accepts text').required('This field is required').min(3,'The field must be at least 3 characters long'),
+        email: yup.string().email('Wrong email').required('This field is required').min(3,'The field must be at least 3 characters long'),
+        password: yup.string().typeError('This field only accepts text').required('This field is required').min(6,'The field must be at least 6 characters long'),
+        second_password: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match'),
     })
     return (
         <Content
@@ -37,7 +37,7 @@ const Registration = () => {
             }}
         >
             <div className="login-form">
-                <h1>Регистрация</h1>
+                <h1>Sign up</h1>
                 <Formik
                     initialValues={{
                         email:'',
@@ -69,8 +69,8 @@ const Registration = () => {
                             </div>
                             <div>
                                 {errorMessage && <p style={{color:"#ff0000"}}>{errorMessage}</p> }
-                                <Button htmlType="submit" type="primary" >Зарегистрироваться</Button>
-                                <Link to="/login">Войти в аккаунт</Link>
+                                <Button htmlType="submit" type="primary" >Sign up</Button>
+                                <Link to="/login">Sign in</Link>
                             </div>
 
                         </form>

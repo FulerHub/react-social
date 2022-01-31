@@ -6,7 +6,7 @@ export const UsersAPI = {
     getUser(userID){
         return instance.get('wp/v2/users/'+userID, defaultOptions()).then(res => res.data);
     },
-    getPostsUsers(users){//3,5,4
+    getPostsUsers(users){
         return instance.get("wp/v2/users?include="+users, defaultOptions()).then(res=>res.data);
     },
     searchUsers(name){

@@ -77,7 +77,7 @@ export const actionGetUsers = (page) => async dispatch =>{
         const response2 = await dispatch(actions.setTotalCount(response.totalCount))
     }
     catch (e) {
-        message.error({content: 'Возникла ошибка!', duration: 2});
+        message.error({content: 'An error has occurred!', duration: 2});
     }
 
     dispatch(actions.loading(false))

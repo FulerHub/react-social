@@ -12,17 +12,17 @@ const Settings = (props) => {
         document.title = `Settings`;
     });
     const valSchema = yup.object().shape({
-        first_name: yup.string().typeError('Это поле принимает только текст').required('Это поле обязательное').min(3,'Поле должно состоять не менее чем из 3 символов'),
-        last_name: yup.string().typeError().required('Это поле обязательное').min(3,'Поле должно состоять не менее чем из 3 символов'),
-        email: yup.string().typeError().required('Это поле обязательное').min(3,'Поле должно состоять не менее чем из 3 символов'),
-        status: yup.string().typeError().min(3,'Поле должно состоять не менее чем из 3 символов'),
-        phone: yup.string().typeError().min(3,'Поле должно состоять не менее чем из 3 символов'),
-        close: yup.boolean().typeError().required('Это поле обязательное'),
+        first_name: yup.string().typeError('This field only accepts text').required('This field is required').min(3,'The field must be at least 3 characters long'),
+        last_name: yup.string().typeError().required('This field is required').min(3,'The field must be at least 3 characters long'),
+        email: yup.string().typeError().required('This field is required').min(3,'The field must be at least 3 characters long'),
+        status: yup.string().typeError().min(3,'The field must be at least 3 characters long'),
+        phone: yup.string().typeError().min(3,'The field must be at least 3 characters long'),
+        close: yup.boolean().typeError().required('This field is required'),
 
     })
     const valSchema2 = yup.object().shape({
-        password: yup.string().required('Это поле обязательное').min(6, 'Пароль должен состоять не менее чем из 6 символов').matches(/[a-zA-Z]/, 'Пароль может содержать только латинские буквы.'),
-        second_password: yup.string().oneOf([yup.ref('password'), null], 'Пароли должны совпадать')
+        password: yup.string().required('This field is required').min(6, 'The field must be at least 6 characters long').matches(/[a-zA-Z]/, 'Пароль может содержать только латинские буквы.'),
+        second_password: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match')
 
     })
 
@@ -139,11 +139,11 @@ const Settings = (props) => {
                                 {errors.phone && touched.phone && <p style={{color:"#ff0000"}}>{errors.phone}</p> }
                             </div>
                             <div className={errors.close && touched.close && 'ant-form-item-has-error'} style={{padding:"20px 0px"}}>
-                                    Профиль
-                                    <Switch name="close" style={{marginLeft:"10px"}} checkedChildren="Закрытый" unCheckedChildren="Открытый" checked={values.close} onChange={(checked, event) => setFieldValue("close",checked)} />
+                                    Profile
+                                    <Switch name="close" style={{marginLeft:"10px"}} checkedChildren="Public" unCheckedChildren="Private" checked={values.close} onChange={(checked, event) => setFieldValue("close",checked)} />
                             </div>
                             <br/>
-                            <Button loading={props.isSending} htmlType="submit" type="primary" >Обновить профиль</Button>
+                            <Button loading={props.isSending} htmlType="submit" type="primary" >Update Profile</Button>
                         </form>
                     )}
                 </Formik>

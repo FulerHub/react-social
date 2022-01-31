@@ -46,7 +46,6 @@ class Posts extends React.Component {
     render() {
         if(this.props.isLoading || this.props.isLoadingInfo) return <Preloader/>;
         const CatList = this.props.categories.map(item =><div key={item?.id} className="profile-categories__item"><Tag id={item?.id} onClick={(e)=>this.clickCategory(e)} color={item?.acf.color}>{item?.name}</Tag></div>);
-        console.log('POSTS RENDER',this.props)
         return (
             <>
                 <div className="profile-categories" style={{

@@ -19,14 +19,14 @@ const Login = () => {
     let location = useLocation();
     useEffect(() => {
         document.title = `Sign in`;
-    });
+    },[]);
     if (isAuth) {
         return <Navigate to="/" state={{ from: location }} />;
     }
 
     const valSchema = yup.object().shape({
-        login: yup.string().typeError('Это поле принимает только текст').required('Это поле обязательное').min(3,'Поле должно состоять не менее чем из 3 символов'),
-        password: yup.string().typeError('Это поле принимает только текст').required('Это поле обязательное').min(3,'Пароль должен состоять не менее чем из 6 символов'),
+        login: yup.string().typeError('This field only accepts text').required('This field is required').min(3,'The field must be at least 3 characters long'),
+        password: yup.string().typeError('This field only accepts text').required('This field is required').min(3,'The field must be at least 6 characters long'),
     })
     return (
         <Content
@@ -61,8 +61,8 @@ const Login = () => {
                             </div>
                             <div>
                                 {errorMessage && <p style={{color:"#ff0000"}}>{errorMessage}</p> }
-                                <Button htmlType="submit" type="primary" >Войти</Button>
-                                <Link to="/registration">Регистрация</Link>
+                                <Button htmlType="submit" type="primary" >Sign in</Button>
+                                <Link to="/registration">Sign up</Link>
                             </div>
 
                         </form>

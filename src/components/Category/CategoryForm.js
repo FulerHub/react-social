@@ -25,8 +25,8 @@ const CategoryForm = () => {
     const dispatch = useDispatch();
     const myID = useSelector(state => state.authReducer.id);
     const valSchema = yup.object().shape({
-        name: yup.string().typeError('Это поле принимает только текст').required('Это поле обязательное').min(3,'Поле должно состоять не менее чем из 3 символов'),
-        desc: yup.string().typeError().required('Это поле обязательное').min(3,'Поле должно состоять не менее чем из 3 символов')
+        name: yup.string().typeError('This field only accepts text').required('This field is required').min(3,'The field must be at least 3 characters long'),
+        desc: yup.string().typeError().required('This field is required').min(3,'The field must be at least 3 characters long')
     })
     const FormSubmit=(values)=>{
         dispatch(actionAddCategory(values.name,values.desc,color,myID));
@@ -60,7 +60,7 @@ const CategoryForm = () => {
             validateOnBlur
             onSubmit={(values) => FormSubmit(values)}
             >
-                {({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, isSubmitting}) => (
+                {({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, isSubmitting,submitForm}) => (
                 <form onSubmit={handleSubmit}>
                     <div className={errors.name && touched.name && 'ant-form-item-has-error'}>
                         <Input onChange={handleChange} onBlur={handleBlur} value={values.name} name="name" size="large" placeholder="Name category" /><br/>
@@ -73,7 +73,7 @@ const CategoryForm = () => {
                     </div>
                     <br/>
 
-                    <Button htmlType="submit" type="primary" >Добавить категорию</Button>
+                    <Button htmlType="submit" type="primary" onClick={submitForm}>Добавить категорию</Button>
                     <Select className={'selectColor'}  defaultValue="#ff5500" style={{ width: 120,backgroundColor: color ?  color : "#ff5500"}} onChange={(e)=>handleChangeSelect(e)}>
                         {colorsList.map((item)=><Option style={{backgroundColor:item}} value={item}>{item}</Option>)}
                     </Select>

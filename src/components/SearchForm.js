@@ -11,7 +11,7 @@ const SearchForm = () => {
     }
     return (
         <div>
-            <Search name="search" placeholder="Найти пользователя" onSearch={FormSubmit} enterButton="Search" size="large" />
+            <Search name="search" placeholder="Find user" onSearch={FormSubmit} enterButton="Search" size="large" />
         </div>
     );
 };

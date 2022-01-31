@@ -39,14 +39,14 @@ export const actionGetCategories = (userID)=> async dispatch =>{
     dispatch(actions.loadCategories(response))
 }
 export const actionAddCategory = (name,desc,color,authorID)=> async dispatch =>{
-    message.loading({ content: 'Добавляю...', key: 'addCategory' });
+    message.loading({ content: 'Adding...', key: 'addCategory' });
     try {
         const response = await CategoryAPI.addCategory(name,desc,color,authorID);
         dispatch(actions.addCategory(response))
-        message.success({ content: 'Успешно добавлен!', key: 'addCategory', duration: 2 });
+        message.success({ content: 'Successfully added!', key: 'addCategory', duration: 2 });
     }
     catch (e) {
-        message.error({ content: 'Ошибка! Немогу добавить', key: 'addCategory', duration: 2 });
+        message.error({ content: 'Error! Cant add', key: 'addCategory', duration: 2 });
     }
 
 }
@@ -55,22 +55,22 @@ export const actionUpdateCategory = (categoryID,name,desc,color,authorID)=> asyn
     try {
         await CategoryAPI.updateCategory(categoryID,name,desc,color,authorID);
         dispatch(actions.updateCategory({id: categoryID,name: name,desc: desc,color: color}))
-        message.success({ content: 'Изменения успешно приняты!', key: 'UpdateCategory', duration: 2 });
+        message.success({ content: 'Changes successfully accepted!', key: 'UpdateCategory', duration: 2 });
     }
     catch (e) {
-        message.error({ content: 'Ошибка! Немогу изменить', key: 'UpdateCategory', duration: 2 });
+        message.error({ content: 'Error! Cant change', key: 'UpdateCategory', duration: 2 });
     }
 
 }
 export const actionDeleteCategory = (categoryID)=> async dispatch =>{
-    message.loading({ content: 'Удаляю...', key: 'deleteCategory' });
+    message.loading({ content: 'Removing...', key: 'deleteCategory' });
     try {
         await CategoryAPI.deleteCategory(categoryID);
         dispatch(actions.deleteCategory(categoryID))
-        message.success({ content: 'Успешно удален!', key: 'deleteCategory' });
+        message.success({ content: 'Successfully removed!', key: 'deleteCategory' });
     }
     catch (e) {
-        message.error({ content: 'Ошибка! Немогу удалить', key: 'deleteCategory' });
+        message.error({ content: 'Error! Can\'t remove', key: 'deleteCategory' });
     }
 
 }

@@ -73,16 +73,16 @@ export const actionGetPosts = ()=> async dispatch =>{
 }
 
 export const actionAddPost = (post)=> async dispatch =>{
-    message.loading({ content: 'Добавляю...', key: 'addPost' });
+    message.loading({ content: 'Adding...', key: 'addPost' });
     try {
         dispatch(actions.sendingPost(true))
         const response = await PostAPI.addPost(post.title.rendered,post.content.rendered,post.categories,post.acf.userid);
         dispatch(actions.addPosts(response))
         dispatch(actions.sendingPost(false))
-        message.success({ content: 'Успешно добавлен!', key: 'addPost', duration: 2 });
+        message.success({ content: 'Successfully added!', key: 'addPost', duration: 2 });
     }
     catch (e) {
-        message.error({ content: 'Ошибка! Немогу добавить', key: 'addPost', duration: 2 });
+        message.error({ content: 'Error! Cant add', key: 'addPost', duration: 2 });
     }
 
 
@@ -93,40 +93,40 @@ export const actionUpdatePost = (postID,text,categories)=> async dispatch =>{
     try {
         await PostAPI.updatePost(postID,text,categories);
         dispatch(actions.updatePost({id: postID,text: text,categories: categories}))
-        message.success({ content: 'Изменения успешно приняты!', key: 'UpdatePost', duration: 2 });
+        message.success({ content: 'Changes successfully accepted!', key: 'UpdatePost', duration: 2 });
     }
     catch (e) {
-        message.error({ content: 'Ошибка! Немогу изменить', key: 'UpdatePost', duration: 2 });
+        message.error({ content: 'Error! Cant change', key: 'UpdatePost', duration: 2 });
     }
 
 
 }
 
 export const actionDeletePost = (postID)=> async dispatch =>{
-    message.loading({ content: 'Удаляю...', key: 'deletePost' });
+    message.loading({ content: 'Removing...', key: 'deletePost' });
     try {
         await PostAPI.deletePost(postID);
         dispatch(actions.deletePost(postID))
-        message.success({ content: 'Успешно удален!', key: 'deletePost' });
+        message.success({ content: 'Successfully removed!', key: 'deletePost' });
     }
     catch (e) {
-        message.error({ content: 'Ошибка! Немогу удалить', key: 'deletePost' });
+        message.error({ content: 'Error! Can\'t remove', key: 'deletePost' });
     }
 
 
 }
 
 export const actionLoadProfile = (id)=> async dispatch =>{
-    message.loading({ content: 'Получаю данные...', key: 'deletePost' });
+    message.loading({ content: 'Getting data...', key: 'deletePost' });
     dispatch(actions.loadingInfo(true))
     try {
         const response = await UsersAPI.getUser(id)
         await dispatch(actions.loadProfile(response))
-        message.success({ content: 'Данные успешно загружены!', key: 'deletePost' });
+        message.success({ content: 'Data loaded!', key: 'deletePost' });
         dispatch(actions.loadingInfo(false))
     }
     catch (e) {
-        message.error({ content: 'Ошибка! Немогу загрузить', key: 'deletePost' });
+        message.error({ content: 'Error! Cant load', key: 'deletePost' });
     }
 
 

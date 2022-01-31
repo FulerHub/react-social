@@ -100,10 +100,9 @@ export const actionLogin = (login, password) => async dispatch => {
     try {
         const response = await AuthAPI.getAuth(login, password);
         if (response.success) {
-            message.success({content: 'Успех!', key: 'Login', duration: 2});
+            message.success({content: 'Success!', key: 'Login', duration: 2});
             localStorage.setItem('token', response.data.token)
             let data = await AuthAPI.getAuthData();
-            console.log("getAuthData", data)
             let {id, nickname, email, roles, avatar_urls, acf} = data;
             const dataUser = {
                 isAuth: true,
@@ -122,12 +121,12 @@ export const actionLogin = (login, password) => async dispatch => {
             }
             dispatch(setAuthData(dataUser))
         } else {
-            message.error({content: 'Ошибка авторизации!', key: 'Login', duration: 2});
+            message.error({content: 'Authorisation Error!', key: 'Login', duration: 2});
             dispatch(setAuthError({errorCode: response.data.statusCode, errorMessage: response.data.message}))
         }
 
     } catch (e) {
-        message.error({content: 'Ошибка авторизации!', key: 'Login', duration: 2});
+        message.error({content: 'Authorisation Error!', key: 'Login', duration: 2});
     }
 
 
@@ -137,7 +136,7 @@ export const actionUpdateAuth = (user) => async dispatch => {
     dispatch(setAuthLoading(true));
     await AuthAPI.updateAuthData(user);
     dispatch(updateAuthData(user))
-    message.success({content: 'Настройки обновлены!', key: 'Update', duration: 2});
+    message.success({content: 'Settings updated!', key: 'Update', duration: 2});
     dispatch(setAuthLoading(false));
 
 
@@ -146,14 +145,14 @@ export const actionAuthPassword = (password) => async dispatch => {
     message.loading({content: 'Update...', key: 'Password'});
     dispatch(setAuthLoading(true));
     await AuthAPI.updateAuthPassword(password);
-    message.success({content: 'Пароль успешно изменен!', key: 'Password', duration: 2});
+    message.success({content: 'Password changed successfully!', key: 'Password', duration: 2});
     dispatch(setAuthLoading(false));
 }
 export const actionCreateAuth = (login, password, email) => async dispatch => {
     message.loading({content: 'Creating...', key: 'Password'});
     try {
         const res = await AuthAPI.createAuth(login, password, email);
-        message.success("Аккаунт успешно создан теперь можете войти")
+        message.success("Account created successfully, now you can login")
 
         //dispatch(actionLogin(login, password))
     } catch (e) {
