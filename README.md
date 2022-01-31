@@ -1,3 +1,5 @@
+![alt text](https://sm.river-fuler.ru/screen/1.jpg)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
